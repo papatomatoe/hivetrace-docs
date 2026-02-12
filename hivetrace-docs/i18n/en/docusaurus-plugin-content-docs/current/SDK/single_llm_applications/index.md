@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: "Connecting Applications with a Single LLM (no agents)"
+sidebar_label: "Single LLM"
 ---
 
 ## Single LLM

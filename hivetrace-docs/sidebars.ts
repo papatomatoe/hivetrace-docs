@@ -25,7 +25,7 @@ const sidebars: SidebarsConfig = {
         {
           type: 'doc',
           id: 'overview/hivetrace-monitoring',
-          label: 'HiveTrace Monitoring?',
+          label: 'HiveTrace Monitoring',
         },
       ],
     },
@@ -78,12 +78,10 @@ const sidebars: SidebarsConfig = {
         {
           type: 'doc',
           id: 'SDK/overview',
-          label: 'Обзор',
         },
         {
           type: 'doc',
           id: 'SDK/single_llm_applications/index',
-          label: 'Single LLM / Одна LLM',
         },
         {
           type: 'category',

@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
 title: "Подключение приложений с одной LLM (без агентов)"
+sidebar_label: "Одна LLM"
 ---
 
 ## Одна LLM
