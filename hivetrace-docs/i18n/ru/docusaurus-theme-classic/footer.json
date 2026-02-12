@@ -1,0 +1,42 @@
+{
+  "link.title.Docs": {
+    "message": "Документация",
+    "description": "Заголовок ссылки подвала Документация"
+  },
+  "link.title.Community": {
+    "message": "Сообщество",
+    "description": "Заголовок ссылки подвала Сообщество"
+  },
+  "link.title.More": {
+    "message": "Больше",
+    "description": "Заголовок ссылки подвала Больше"
+  },
+  "link.item.label.Tutorial": {
+    "message": "Руководство",
+    "description": "Метка элемента ссылки подвала Руководство"
+  },
+  "link.item.label.Stack Overflow": {
+    "message": "Stack Overflow",
+    "description": "Метка элемента ссылки подвала Stack Overflow"
+  },
+  "link.item.label.Discord": {
+    "message": "Discord",
+    "description": "Метка элемента ссылки подвала Discord"
+  },
+  "link.item.label.X": {
+    "message": "X",
+    "description": "Метка элемента ссылки подвала X"
+  },
+  "link.item.label.Blog": {
+    "message": "Блог",
+    "description": "Метка элемента ссылки подвала Блог"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Метка элемента ссылки подвала GitHub"
+  },
+  "copyright": {
+    "message": "Copyright © 2025 HiveTrace",
+    "description": "Авторские права в подвале"
+  }
+} 

@@ -1,0 +1,50 @@
+{
+  "title": {
+    "message": "Hivetrace",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "My Site Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Tutorial": {
+    "message": "Documentation",
+    "description": "Navbar item with label Documentation"
+  },
+  "item.label.Blog": {
+    "message": "Blog",
+    "description": "Navbar item with label Blog"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Navbar item with label GitHub"
+  },
+  "item.label.Обзор": {
+    "message": "Overview",
+    "description": "Navbar item with label Обзор"
+  },
+  "item.label.Гайды": {
+    "message": "Guides",
+    "description": "Navbar item with label Гайды"
+  },
+  "item.label.Документация": {
+    "message": "Documentation",
+    "description": "Navbar item with label Документация"
+  },
+  "item.label.API": {
+    "message": "API",
+    "description": "Navbar item with label API"
+  },
+  "item.label.Интеграция": {
+    "message": "Integration",
+    "description": "Navbar item with label Интеграция"
+  },
+  "item.label.Вебсайт": {
+    "message": "Website",
+    "description": "Navbar item with label Вебсайт"
+  },
+  "item.label.PyPI": {
+    "message": "PyPI",
+    "description": "Navbar item with label PyPI"
+  }
+}

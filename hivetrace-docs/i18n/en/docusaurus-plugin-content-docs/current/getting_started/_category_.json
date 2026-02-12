@@ -1,0 +1,8 @@
+{
+  "label": "Quick Start",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "A quick start with HiveTrace is to set up a monitoring system in a few simple steps."
+  }
+} 

@@ -1,0 +1,22 @@
+{
+  "title": {
+    "message": "HiveTrace",
+    "description": "Заголовок в навигационной панели"
+  },
+  "logo.alt": {
+    "message": "Логотип HiveTrace",
+    "description": "Альтернативный текст логотипа навигации"
+  },
+  "item.label.Tutorial": {
+    "message": "Документация",
+    "description": "Элемент навигации с меткой Документация"
+  },
+  "item.label.Blog": {
+    "message": "Блог",
+    "description": "Элемент навигации с меткой Блог"
+  },
+  "item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Элемент навигации с меткой GitHub"
+  }
+} 
