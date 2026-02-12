@@ -79,6 +79,10 @@
     "message": "SDK",
     "description": "The label for category SDK in sidebar apiSidebar"
   },
+  "sidebar.apiSidebar.category.Мультиагенты": {
+    "message": "Multi-agents",
+    "description": "The label for category Мультиагенты in sidebar apiSidebar"
+  },
   "sidebar.apiSidebar.category.Агенты": {
     "message": "Agents",
     "description": "The label for category Агенты in sidebar apiSidebar"
