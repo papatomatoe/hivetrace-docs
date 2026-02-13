@@ -1,0 +1,54 @@
+---
+const locale = Astro.currentLocale;
+---
+
+<ul>
+	<li class="demo">
+		<a
+			href={locale === "ru"
+				? "https://hivetrace.ru/preview/"
+				: "https://hivetrace.ai/preview/"}
+			>{locale === "ru" ? "Запросить демо" : "Book Demo"}</a
+		>
+	</li>
+	<li>
+		<a href={locale === "ru" ? "https://hivetrace.ru" : "https://hivetrace.ai"}
+			>{locale === "ru" ? "hivetrace.ru" : "hivetrace.ai"}</a
+		>
+	</li>
+	<li>
+		<a href="https://pypi.org/project/hivetrace/">PyPI</a>
+	</li>
+</ul>
+
+<style>
+	@layer starlight.core {
+		ul {
+			list-style: none;
+			display: flex;
+			gap: 20px;
+		}
+		a {
+			text-decoration: none;
+			color: var(--sl-color-text-accent);
+			padding: 0.5em;
+			margin: -0.5em;
+		}
+		a:hover {
+			opacity: 0.66;
+		}
+
+		.demo {
+			margin-right: 12px;
+			a {
+				background: var(--sl-color-text-accent);
+				border-color: var(--sl-color-text-accent);
+				color: var(--sl-color-black);
+				text-decoration: none;
+				border: 1px solid;
+				border-radius: 999rem;
+				padding: 0.75rem 1.25rem;
+			}
+		}
+	}
+</style>

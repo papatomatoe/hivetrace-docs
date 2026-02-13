@@ -1,3 +1,4 @@
 gh-pages-deploy/
 venv/
 node_modules/
+.pnpm-store/
