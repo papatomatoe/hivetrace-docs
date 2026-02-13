@@ -9,6 +9,6 @@ draft: true
 
 ## Рекомендуем начать с
 
-- [Интеграционные паттерны](/guides/integration-patterns)
-- [Деплоймент и окружения](/guides/deployment)
-- [Best practices](/guides/best-practices)
+- [Интеграционные паттерны](guides/integration-patterns)
+- [Деплоймент и окружения](guides/deployment)
+- [Best practices](guides/best-practices)
