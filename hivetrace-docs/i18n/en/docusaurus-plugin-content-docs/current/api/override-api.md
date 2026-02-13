@@ -89,6 +89,51 @@ Defines validation rules directly inside the request.
 
 ---
 
+#### `dataclean.patterns`: allowed values
+
+`patterns` is a list of dataclean patterns. Each item can be:
+
+- a string with a predefined pattern name
+- an object with a custom pattern `{ "name": "...", "regex": "..." }`
+
+Allowed values for **predefined** patterns:
+
+| Pattern | Description |
+| --- | --- |
+| `ADDRESS` | Address |
+| `BANK_CARD_NUMBER` | Bank card number |
+| `COMPANY` | Company / organization |
+| `CVC` | Card CVC/CVV |
+| `DATE` | Date |
+| `DEADLINE_DATE` | Deadline date |
+| `DIAGNOSIS` | Diagnosis |
+| `DOMAIN` | Domain |
+| `DURATION` | Duration |
+| `EMAILS` | Email addresses |
+| `INN` | INN (taxpayer identification number) |
+| `IP` | IP address |
+| `JOB_ROLE` | Job role / position |
+| `KPP` | KPP |
+| `MONEY` | Money amounts |
+| `NAME` | Person name |
+| `OGRN` | OGRN |
+| `OGRNIP` | OGRNIP |
+| `PASSPORT_NUMBER` | Passport number |
+| `PHONE_NUMBER` | Phone number |
+| `SNILS` | SNILS |
+
+---
+
+#### `dataclean.clean_type` (masking type): allowed values
+
+| Masking type | Description |
+| --- | --- |
+| `MASKING` | Masking: replaces matches with a mask |
+| `DELETION` | Deletion: removes matches from the text |
+| `DETECTION` | Detection: detects matches without modifying the text |
+
+---
+
 ### Response Schema
 
 Override endpoints return the same response structure as the Base API.
