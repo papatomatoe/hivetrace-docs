@@ -9,6 +9,6 @@ Production-focused integration and operating patterns for HiveTrace.
 
 ## Recommended Starting Points
 
-- [Integration Patterns](en/guides/integration-patterns)
-- [Deployment](en/guides/deployment)
-- [Best Practices](en/guides/best-practices)
+- [Integration Patterns](guides/integration-patterns)
+- [Deployment](guides/deployment)
+- [Best Practices](guides/best-practices)
