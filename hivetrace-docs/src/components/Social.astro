@@ -2,32 +2,139 @@
 const locale = Astro.currentLocale;
 ---
 
-<ul>
-	<li class="demo">
-		<a
-			href={locale === "ru"
-				? "https://hivetrace.ru/preview/"
-				: "https://hivetrace.ai/preview/"}
-			>{locale === "ru" ? "Запросить демо" : "Book Demo"}</a
-		>
-	</li>
-	<li>
-		<a href={locale === "ru" ? "https://hivetrace.ru" : "https://hivetrace.ai"}
-			>{locale === "ru" ? "hivetrace.ru" : "hivetrace.ai"}</a
-		>
-	</li>
-	<li>
-		<a href="https://pypi.org/project/hivetrace/">PyPI</a>
-	</li>
-</ul>
+<script>
+	const menu = document.querySelector(".menu");
+	const menuButton = menu?.querySelector(".menu-button");
+	const menuContainer = menu?.querySelector(".menu-container");
+	const menuMediaQuery = window.matchMedia(
+		"(min-width: 799px) and (max-width: 1151px)",
+	);
+	let listenersBound = false;
+
+	const menuHandler = () => {
+		if (!menuMediaQuery.matches) return;
+		menuContainer?.classList.toggle("menu-container--open");
+	};
+
+	const outsideClickHandler = (event: MouseEvent) => {
+		if (
+			!menuMediaQuery.matches ||
+			!menu ||
+			!menuContainer?.classList.contains("menu-container--open")
+		)
+			return;
+
+		const target = event.target;
+
+		if (!(target instanceof Node)) return;
+
+		if (!menu.contains(target)) {
+			menuContainer.classList.remove("menu-container--open");
+		}
+	};
+
+	const bindListeners = () => {
+		if (listenersBound) return;
+		menuButton?.addEventListener("click", menuHandler);
+		document.addEventListener("click", outsideClickHandler);
+		listenersBound = true;
+	};
+
+	const unbindListeners = () => {
+		if (!listenersBound) return;
+		menuButton?.removeEventListener("click", menuHandler);
+		document.removeEventListener("click", outsideClickHandler);
+		menuContainer?.classList.remove("menu-container--open");
+		listenersBound = false;
+	};
+
+	const mediaQueryHandler = (event: MediaQueryListEvent) => {
+		if (event.matches) {
+			bindListeners();
+			return;
+		}
+
+		unbindListeners();
+	};
+
+	if (menuMediaQuery.matches) {
+		bindListeners();
+	}
+
+	menuMediaQuery.addEventListener("change", mediaQueryHandler);
+
+	window.addEventListener(
+		"pagehide",
+		() => {
+			unbindListeners();
+			menuMediaQuery.removeEventListener("change", mediaQueryHandler);
+		},
+		{ once: true },
+	);
+</script>
+
+<div class="menu">
+	<button class="menu-button"
+		>{locale === "ru" ? "Меню" : "Menu"}
+		<svg
+			aria-hidden="true"
+			class="caret"
+			width="16"
+			height="16"
+			viewBox="0 0 24 24"
+			fill="currentColor"
+			><path
+				d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"
+			></path>
+		</svg>
+	</button>
+	<ul class="menu-container">
+		<li class="demo">
+			<a
+				href={locale === "ru"
+					? "https://hivetrace.ru/preview/"
+					: "https://hivetrace.ai/preview/"}
+				target="_blank"
+				rel="noopener noreferrer"
+				>{locale === "ru" ? "Запросить демо" : "Book Demo"}</a
+			>
+		</li>
+		<li>
+			<a
+				href={locale === "ru" ? "https://hivetrace.ru" : "https://hivetrace.ai"}
+				target="_blank"
+				rel="noopener noreferrer"
+				>{locale === "ru" ? "hivetrace.ru" : "hivetrace.ai"}</a
+			>
+		</li>
+		<li>
+			<a
+				href="https://pypi.org/project/hivetrace/"
+				target="_blank"
+				rel="noopener noreferrer">PyPI</a
+			>
+		</li>
+	</ul>
+</div>
 
 <style>
 	@layer starlight.core {
+		.menu {
+			width: 100%;
+			position: relative;
+		}
+
+		.menu-button {
+			display: none;
+		}
+
 		ul {
 			list-style: none;
+			justify-content: space-around;
 			display: flex;
 			flex-wrap: wrap;
 			gap: 20px;
+			padding: 0;
 		}
 		a {
 			text-decoration: none;
@@ -41,6 +148,7 @@ const locale = Astro.currentLocale;
 
 		.demo {
 			margin-right: 12px;
+
 			a {
 				background: var(--sl-color-text-accent);
 				border-color: var(--sl-color-text-accent);
@@ -49,6 +157,66 @@ const locale = Astro.currentLocale;
 				border: 1px solid;
 				border-radius: 999rem;
 				padding: 0.75rem 1.25rem;
+			}
+		}
+
+		@media (798px < width < 1152px) {
+			.menu-button {
+				display: flex;
+				align-items: center;
+				padding: 2px 2px 2px 10px;
+				gap: 5px;
+				justify-content: space-between;
+				border: 1px solid var(--sl-color-gray-5);
+				background-color: var(--sl-color-black);
+				border-radius: 0.5rem;
+				color: var(--sl-color-gray-2);
+				font-size: var(--sl-text-sm);
+				cursor: pointer;
+
+				&:hover {
+					opacity: 0.8;
+				}
+			}
+
+			.caret {
+				rotate: 90deg;
+				width: 20px;
+				height: 20px;
+			}
+
+			.menu-container {
+				display: none;
+				position: absolute;
+				background: var(--sl-color-bg-nav);
+				gap: 20px;
+				padding: 10px 20px;
+				border: 1px solid var(--sl-color-hairline-shade);
+				border-radius: 0.5rem;
+			}
+
+			a {
+				white-space: nowrap;
+				padding: 0;
+				margin: 0;
+			}
+
+			.demo {
+				margin: 0;
+
+				a {
+					background: transparent;
+					color: var(--sl-color-text-accent);
+
+					text-decoration: none;
+					border: none;
+					border-radius: 0;
+					padding: 0;
+				}
+			}
+
+			.menu-container--open {
+				display: grid;
 			}
 		}
 	}
