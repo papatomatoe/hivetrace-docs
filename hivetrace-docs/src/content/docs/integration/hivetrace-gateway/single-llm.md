@@ -155,16 +155,24 @@ print(response.choices[0].message.content)
 ### Пример (curl)
 
 ```bash
+REQ_ID="$(uuidgen | tr '[:upper:]' '[:lower:]')"
+
+export ATTACHED_JSON=$(jq -c -n \
+  --arg name "image.png" \
+  --arg b64 "$(base64 -w0 ./image.png)" \
+  --arg type "image/png" \
+  '[{name: $name, content_base64: $b64, type: $type}]')
+
 curl -X POST "$GATEWAY_URL/chat/completions" \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer $LITELLM_MASTER_KEY" \
   -H "X-Application-Id: $HIVETRACE_APPLICATION_ID" \
   -H "X-User-Id: $USER_ID" \
   -H "X-Session-Id: $SESSION_ID" \
-  -H "X-Attached-Files: $ATTACHED_JSON_2" \
+  -H "X-Attached-Files: $ATTACHED_JSON" \
   -d "{
     \"model\": \"gpt-4.1-mini\",
-    \"metadata\": {\"request_id\": \"$REQ_ID_2\"},
+    \"metadata\": {\"request_id\": \"$REQ_ID\"},
     \"messages\": [{\"role\":\"user\",\"content\":\"Проанализируй картинку\"}]
   }"
 ```
