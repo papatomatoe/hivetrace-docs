@@ -106,12 +106,13 @@ JSON должен включать в себя поля:
 - "content_base64"
 - "type"
 
-А так же добавить в тело запроса параметр `request_id` для однозначного определения принадлежности файла к конкретному сообщению.
+А так же добавить в тело запроса параметр `request_id` (**uuid v4**) для однозначного определения принадлежности файла к конкретному сообщению.
 
 ### Пример (python)
 
 ```python
 import base64
+import uuid
 import json
 import os
 from openai import OpenAI
@@ -119,6 +120,8 @@ from openai import OpenAI
 file_path = "image.png"
 with open(file_path, "rb") as f:
     content_b64 = base64.standard_b64encode(f.read()).decode("ascii")
+
+request_id = str(uuid.uuid4())
 
 attached = [
     {
@@ -143,6 +146,7 @@ client = OpenAI(
 response = client.chat.completions.create(
     model="gpt-4.1-mini",
     messages=[{"role": "user", "content": "Проанализируй картинку"}],
+    metadata={"request_id": request_id}
 )
 
 print(response.choices[0].message.content)

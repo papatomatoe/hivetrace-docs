@@ -119,12 +119,13 @@ The JSON must contain the following fields for each file:
 - `"content_base64"`
 - `"type"`
 
-You should also add the `request_id` parameter to the request body to unambiguously associate the file(s) with a specific message.
+You should also add the `request_id` (**uuid v4**) parameter to the request body to unambiguously associate the file(s) with a specific message.
 
 ### Example (Python)
 
 ```python
 import base64
+import uuid
 import json
 import os
 from openai import OpenAI
@@ -132,6 +133,8 @@ from openai import OpenAI
 file_path = "image.png"
 with open(file_path, "rb") as f:
     content_b64 = base64.standard_b64encode(f.read()).decode("ascii")
+
+request_id = str(uuid.uuid4())
 
 attached = [
     {
@@ -156,6 +159,7 @@ client = OpenAI(
 response = client.chat.completions.create(
     model="gpt-4.1-mini",
     messages=[{"role": "user", "content": "Analyze the image"}],
+    metadata={"request_id": request_id}
 )
 
 print(response.choices[0].message.content)
