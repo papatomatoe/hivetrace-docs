@@ -2,6 +2,7 @@
 	"name": "hivetrace-docs",
 	"type": "module",
 	"version": "0.0.2",
+	"packageManager": "pnpm@11.1.3",
 	"homepage": "https://hivetrace.github.io/docs",
 	"scripts": {
 		"dev": "astro dev",
