@@ -18,15 +18,30 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout your repository using git
-        uses: actions/checkout@v4
-      - name: Install, build, and upload your site output
-        uses: withastro/action@v5
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
         with:
-          path: hivetrace-docs
-          node-version: 22
-          package-manager: pnpm@latest
-          build-cmd: pnpm run build
-          out-dir: dist
+          node-version: 24
+
+      - name: Enable pnpm
+        run: |
+          corepack enable pnpm
+          corepack prepare pnpm@latest --activate
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+        working-directory: hivetrace-docs
+
+      - name: Build site
+        run: pnpm run build
+        working-directory: hivetrace-docs
+
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: hivetrace-docs/dist
 
   deploy:
     needs: build
